@@ -28,14 +28,14 @@ LICENSE = "CLOSED"
 DEPENDS = "redhawk-core uhd"
 RDEPENDS_${PN} = "redhawk-core uhd"
 
-RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
+RH_DEVICE_NAME="RFNoC_DefaultPersona"
 
 SRC_URI = "git://git@rackstation:30001/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=master \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "fb5e1470d66a601ef38dcd9542bbdd1313d8ef0e"
+SRCREV = "6460b26680802f9f6e44d672575c366775ca2285"
 
 PR = "r0" 
 
