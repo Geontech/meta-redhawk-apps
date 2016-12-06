@@ -30,12 +30,12 @@ RDEPENDS_${PN} = "redhawk-core uhd"
 
 RH_COMPONENT_NAME="RFNoC_TestComponent"
 
-SRC_URI = "git://git@rackstation:30001/RF-NoC/${RH_COMPONENT_NAME}.git;protocol=ssh;branch=master \
+SRC_URI = "git://git@curiosity/RF-NoC/${RH_COMPONENT_NAME}.git;protocol=ssh;branch=master \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "7446733f77ca6543beafbfe7071b912d0b5e03b5"
+SRCREV = "ed9122182eba6374be9ff35ab698bc015a971162"
 
 PR = "r0" 
 

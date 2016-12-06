@@ -18,24 +18,25 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-DESCRIPTION = "REDHAWK Device for the RF-NoC Platforms"
-HOMEPAGE = "http://www.redhawksdr.org"
+DESCRIPTION = "REDHAWK Shared Library for Liquid DSP"
+HOMEPAGE = "http://www.liquidsdr.org"
 LICENSE = "CLOSED"
 
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-core uhd"
-RDEPENDS_${PN} = "redhawk-core uhd"
+DEPENDS = ""
+RDEPENDS_${PN} = "boost-filesystem boost-serialization boost-system boost-thread libfftwf omniorb redhawk-core util-linux-libuuid"
 
-RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
+RH_DEPS_NAME="liquid-dsp-rh"
 
-SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=master \
+SRC_URI = "git://git@curiosity/CognitiveRadio/${RH_DEPS_NAME}.git;protocol=ssh;branch=develop \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
+    file://Force_Install_to_SDR.patch \
 "
 
-SRCREV = "12a268ef921ecaaf497fbdeb43d01257d4b4a361"
+SRCREV = "b6ef07d547ecc6f06c1d8bd2bfe7d062746c3cde"
 
 PR = "r0" 
 
@@ -43,11 +44,19 @@ S = "${WORKDIR}/git/cpp_armv7l"
 
 # We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative redhawk-device
+inherit autotools-brokensep pkgconfig pythonnative redhawk-entity redhawk-sysroot
 
-EXTRA_OECONF += "--prefix=${SDRROOT}"
+PREFIX = "${SDRROOT}/dom/deps/liquid-dsp"
+EXEC_PREFIX = "${PREFIX}/cpp_armv7l"
+LIBDIR = "${EXEC_PREFIX}/lib"
+INCLUDEDIR = "${EXEC_PREFIX}/include"
+
+EXTRA_OECONF += "--prefix=${PREFIX} --exec-prefix=${EXEC_PREFIX} --libdir=${LIBDIR} --includedir=${INCLUDEDIR}"
 EXTRA_AUTORECONF += "-I ${STAGING_DIR}/${MACHINE}${OSSIEHOME}/share/aclocal/ossie"
 
 FILES_${PN} += "${SDRROOT}/*"
-INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
+FILES_${PN}-dbg += "${SDRROOT}/dom/deps/liquid-dsp/cpp_armv7l/lib/.debug/*"
+FILES_${PN}-dev += "${SDRROOT}/dom/deps/liquid-dsp/cpp_armv7l/lib/libliquid-dsp.so"
+FILES_${PN}-staticdev += "${SDRROOT}/dom/deps/liquid-dsp/cpp_armv7l/lib/libliquid-dsp.a"
+#INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
 

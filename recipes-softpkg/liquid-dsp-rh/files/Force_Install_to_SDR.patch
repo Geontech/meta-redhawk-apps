@@ -1,0 +1,13 @@
+diff --git cpp_armv7l/Makefile.am cpp_armv7l/Makefile.am
+index a2bdb24..aca79c8 100644
+--- cpp_armv7l/Makefile.am
++++ cpp_armv7l/Makefile.am
+@@ -23,6 +23,9 @@ SUBDIRS = \
+        src/utility/src
+ lib_LTLIBRARIES = libliquid-dsp.la
+ 
++libdir = $(SDR_ROOT)/dom/deps/liquid-dsp/cpp_armv7l/lib
++includedir = $(SDR_ROOT)/dom/deps/liquid-dsp/cpp_armv7l/include
++
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = liquid-dsp.pc

@@ -1,0 +1,30 @@
+diff --git a/makefile.in b/makefile.in
+index 840dee3..69b3ef0 100644
+--- a/makefile.in
++++ b/makefile.in
+@@ -252,10 +252,8 @@ fec_objects :=							\
+ $(fec_objects) : %.o : %.c $(headers)
+ 
+ # auto-generated tables
+-src/fec/gentab/reverse_byte_gentab : % : %.c
+-
+-src/fec/gentab/reverse_byte.c : src/fec/gentab/reverse_byte_gentab
+-	./$< > $@
++src/fec/gentab/reverse_byte.c : 
++	$(TOOLBINDIR)/reverse_byte_gentab > $@
+ 
+ # add auto-generated files to extra_clean list
+ extra_clean +=							\
+@@ -900,10 +898,8 @@ utility_objects :=						\
+ $(utility_objects) : %.o : %.c $(headers)
+ 
+ # auto-generated tables
+-src/utility/gentab/count_ones_gentab : % : %.c
+-
+-src/utility/gentab/count_ones.c : src/utility/gentab/count_ones_gentab
+-	./$< > $@
++src/utility/gentab/count_ones.c :
++	$(TOOLBINDIR)/count_ones_gentab > $@
+ 
+ # add auto-generated files to extra_clean list
+ extra_clean +=							\

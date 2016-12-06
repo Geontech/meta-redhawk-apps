@@ -18,28 +18,28 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-DESCRIPTION = "REDHAWK Device for the RF-NoC Platforms"
+DESCRIPTION = "REDHAWK Component with an RF-NoC implementation"
 HOMEPAGE = "http://www.redhawksdr.org"
 LICENSE = "CLOSED"
 
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-core uhd"
-RDEPENDS_${PN} = "redhawk-core uhd"
+DEPENDS = "redhawk-bulkio redhawk-core uhd liquid-dsp fftwf"
+RDEPENDS_${PN} = "redhawk-bulkio redhawk-core uhd liquid-dsp fftwf"
 
-RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
+RH_COMPONENT_NAME="TuneFilterDecimate"
 
-SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=master \
+SRC_URI = "git://git@curiosity/RF-NoC/${RH_COMPONENT_NAME}.git;protocol=ssh;branch=develop-2.0-RFNoC \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "12a268ef921ecaaf497fbdeb43d01257d4b4a361"
+SRCREV = "f04a8a40b40a02a1399b9d53792a428b3b76d65a"
 
 PR = "r0" 
 
-S = "${WORKDIR}/git/cpp_armv7l"
+S = "${WORKDIR}/git/cpp_rfnoc"
 
 # We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.

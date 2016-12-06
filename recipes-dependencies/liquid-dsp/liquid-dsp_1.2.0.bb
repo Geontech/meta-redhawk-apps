@@ -18,36 +18,50 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-DESCRIPTION = "REDHAWK Device for the RF-NoC Platforms"
-HOMEPAGE = "http://www.redhawksdr.org"
+DESCRIPTION = "Liquid DSP Library"
+HOMEPAGE = "http://www.liquidsdr.org"
 LICENSE = "CLOSED"
+
+BBCLASSEXTEND += "native"
 
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-core uhd"
-RDEPENDS_${PN} = "redhawk-core uhd"
+DEPENDS = "liquid-dsp-native"
+RDEPENDS_${PN} = ""
 
-RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
+RH_DEPS_NAME="liquid-dsp"
 
-SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=master \
-    file://Add_Missing_Files.patch \
-    file://Clear_AMFLAGS.patch \
+SRC_URI = "git://github.com/jgaeddert/${RH_DEPS_NAME}.git;protocol=git;tag=v1.2.0 \
+    file://Hard_Float.patch \
+    file://Run_Native_Gentab.patch \
 "
 
-SRCREV = "12a268ef921ecaaf497fbdeb43d01257d4b4a361"
+SRC_URI_class-native = "git://github.com/jgaeddert/${RH_DEPS_NAME}.git;protocol=git;tag=v1.2.0 \
+"
 
 PR = "r0" 
 
-S = "${WORKDIR}/git/cpp_armv7l"
+S = "${WORKDIR}/git/"
 
 # We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative redhawk-device
+inherit autotools-brokensep pkgconfig pythonnative
 
-EXTRA_OECONF += "--prefix=${SDRROOT}"
-EXTRA_AUTORECONF += "-I ${STAGING_DIR}/${MACHINE}${OSSIEHOME}/share/aclocal/ossie"
+EXTRA_OECONF = "--prefix=${STAGING_DIR}/${MACHINE}/usr/ --exec-prefix=${STAGING_DIR}/${MACHINE}/usr/"
+EXTRA_OECONF_class-native = "--prefix=${STAGING_DIR_NATIVE}/usr/ --exec-prefix=${STAGING_DIR_NATIVE}/usr/"
 
-FILES_${PN} += "${SDRROOT}/*"
-INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
+FILES_${PN} += "/usr/*"
+FILES_${PN}-dev += "/usr/lib/libliquid.so"
+FILES_${PN}-staticdev += "/usr/lib/libliquid.a"
+#INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
 
+do_compile() {
+    export TOOLBINDIR=${STAGING_BINDIR_NATIVE}
+    oe_runmake
+}
+
+do_install_class-native() {
+    cp -r ${S}/src/fec/gentab/reverse_byte_gentab ${STAGING_BINDIR_NATIVE}
+    cp -r ${S}/src/utility/gentab/count_ones_gentab ${STAGING_BINDIR_NATIVE}
+}

@@ -1,0 +1,99 @@
+diff --git a/makefile.in b/makefile.in
+index 840dee3..e986b80 100644
+--- a/makefile.in
++++ b/makefile.in
+@@ -236,7 +236,6 @@ fec_objects :=							\
+ 	src/fec/src/fec_hamming128.o				\
+ 	src/fec/src/fec_hamming1511.o				\
+ 	src/fec/src/fec_hamming3126.o				\
+-	src/fec/src/fec_hamming128_gentab.o			\
+ 	src/fec/src/fec_pass.o					\
+ 	src/fec/src/fec_rep3.o					\
+ 	src/fec/src/fec_rep5.o					\
+@@ -244,25 +243,12 @@ fec_objects :=							\
+ 	src/fec/src/fec_secded2216.o				\
+ 	src/fec/src/fec_secded3932.o				\
+ 	src/fec/src/fec_secded7264.o				\
+-	src/fec/gentab/reverse_byte.o				\
+ 	src/fec/src/sumproduct.o				\
+ 
+ 
+ # list explicit targets and dependencies here
+ $(fec_objects) : %.o : %.c $(headers)
+ 
+-# auto-generated tables
+-src/fec/gentab/reverse_byte_gentab : % : %.c
+-
+-src/fec/gentab/reverse_byte.c : src/fec/gentab/reverse_byte_gentab
+-	./$< > $@
+-
+-# add auto-generated files to extra_clean list
+-extra_clean +=							\
+-	src/fec/gentab/reverse_byte_gentab			\
+-	src/fec/gentab/reverse_byte.c				\
+-	src/fec/gentab/reverse_byte.o				\
+-
+ # autotests
+ fec_autotests :=						\
+ 	src/fec/tests/crc_autotest.c				\
+@@ -895,23 +881,9 @@ utility_objects :=						\
+ 	src/utility/src/msb_index.o				\
+ 	src/utility/src/pack_bytes.o				\
+ 	src/utility/src/shift_array.o				\
+-	src/utility/gentab/count_ones.o				\
+ 
+ $(utility_objects) : %.o : %.c $(headers)
+ 
+-# auto-generated tables
+-src/utility/gentab/count_ones_gentab : % : %.c
+-
+-src/utility/gentab/count_ones.c : src/utility/gentab/count_ones_gentab
+-	./$< > $@
+-
+-# add auto-generated files to extra_clean list
+-extra_clean +=							\
+-	src/utility/gentab/count_ones_gentab			\
+-	src/utility/gentab/count_ones.c				\
+-	src/utility/gentab/count_ones.o				\
+-
+-
+ # autotests
+ utility_autotests :=						\
+ 	src/utility/tests/bshift_array_autotest.c		\
+@@ -1349,7 +1321,6 @@ clean-examples:
+ # NOTE: sandbox _requires_ fftw3 to build
+ .PHONY: sandbox
+ sandbox_programs =						\
+-	sandbox/crc_gentab					\
+ 	sandbox/ellip_func_test					\
+ 	sandbox/ellip_test					\
+ 	sandbox/eqlms_cccf_test					\
+@@ -1358,10 +1329,7 @@ sandbox_programs =						\
+ 	sandbox/fec_golay_test					\
+ 	sandbox/fec_hamming3126_example				\
+ 	sandbox/fec_hamming128_test				\
+-	sandbox/fec_hamming128_gentab				\
+ 	sandbox/fec_hamming128_example				\
+-	sandbox/fec_hamming74_gentab				\
+-	sandbox/fec_hamming84_gentab				\
+ 	sandbox/fec_hamming_test				\
+ 	sandbox/fec_ldpc_test					\
+ 	sandbox/fec_rep3_test					\
+@@ -1372,7 +1340,6 @@ sandbox_programs =						\
+ 	sandbox/fec_spc2216_test				\
+ 	sandbox/fec_secded_punctured_test			\
+ 	sandbox/fecsoft_conv_test				\
+-	sandbox/fecsoft_hamming128_gentab			\
+ 	sandbox/fecsoft_ldpc_test				\
+ 	sandbox/fec_sumproduct_test				\
+ 	sandbox/fft_dual_radix_test				\
+@@ -1406,9 +1373,7 @@ sandbox_programs =						\
+ 	sandbox/minsearch_test					\
+ 	sandbox/minsearch2_test					\
+ 	sandbox/matrix_eig_test					\
+-	sandbox/modem_demodulate_arb_gentab			\
+ 	sandbox/modem_demodulate_soft_test			\
+-	sandbox/modem_demodulate_soft_gentab			\
+ 	sandbox/ofdmoqam_firpfbch_test				\
+ 	sandbox/ofdm_ber_test					\
+ 	sandbox/packetizer_persistent_ber_test			\

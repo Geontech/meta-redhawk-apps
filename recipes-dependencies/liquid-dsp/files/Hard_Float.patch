@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 40edbb0..a1c4d26 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -257,7 +257,7 @@ arm*)
+     MLIBS_DOTPROD="src/dotprod/src/dotprod_cccf.o \
+                    src/dotprod/src/dotprod_crcf.o \
+                    src/dotprod/src/dotprod_rrrf.o"
+-    ARCH_OPTION="-marm -mfloat-abi=softfp";;
++    ARCH_OPTION="";;
+ *)
+     # unknown architecture : use portable C version
+     MLIBS_DOTPROD="src/dotprod/src/dotprod_cccf.o \

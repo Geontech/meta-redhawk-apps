@@ -1,0 +1,8 @@
+--- cpp_armv7l/Makefile.am	2016-11-29 15:49:45.424338410 -0500
++++ cpp_armv7l-patched/Makefile.am	2016-11-29 15:56:31.893113858 -0500
+@@ -1,4 +1,4 @@
+-ACLOCAL_AMFLAGS = -I m4 -I${OSSIEHOME}/share/aclocal/ossie
++ACLOCAL_AMFLAGS = -I m4
+ AUTOMAKE_OPTIONS = subdir-objects
+ 
+ SUBDIRS = \
