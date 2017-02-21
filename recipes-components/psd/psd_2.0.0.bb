@@ -25,17 +25,17 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-bulkio redhawk-core uhd liquid-dsp fftwf"
-RDEPENDS_${PN} = "redhawk-bulkio redhawk-core uhd liquid-dsp fftwf"
+DEPENDS = "redhawk-bulkio redhawk-core uhd"
+RDEPENDS_${PN} = "redhawk-bulkio redhawk-core uhd"
 
-RH_COMPONENT_NAME="TuneFilterDecimate"
+RH_COMPONENT_NAME="psd"
 
 SRC_URI = "git://git@curiosity/RF-NoC/${RH_COMPONENT_NAME}.git;protocol=ssh;branch=develop-2.0-RFNoC \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "8e99d7015a290c9feb114b0aedf79feb8b036d0e"
+SRCREV = "d4fcd20718555d352a12d90ff5826d070bff176c"
 
 PR = "r0" 
 
