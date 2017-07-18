@@ -18,36 +18,44 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-DESCRIPTION = "REDHAWK Device for the RF-NoC Platforms"
-HOMEPAGE = "http://www.redhawksdr.org"
+DESCRIPTION = "RF-NoC RedHawk Library"
+HOMEPAGE = "http://www.geontech.com"
 LICENSE = "CLOSED"
 
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-core rf-noc-rh uhd"
-RDEPENDS_${PN} = "redhawk-core rf-noc-rh uhd"
+DEPENDS = "redhawk-core uhd"
+RDEPENDS_${PN} = "redhawk-core uhd"
 
-RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
+RH_DEPS_NAME="RFNoC_RH"
 
-SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=master \
-    file://Add_Missing_Files.patch \
-    file://Clear_AMFLAGS.patch \
+SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEPS_NAME}.git;protocol=ssh;branch=develop \
+        file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "1e26e3fef6c739ec8ebfa5ca2de8e7db1c7be872"
+SRCREV = "5c1b338a59a5ef3cde876788bf2f51ce1d17b710"
 
-PR = "r0" 
+PR = "r0"
 
-S = "${WORKDIR}/git/cpp_armv7l"
+S = "${WORKDIR}/git/"
 
 # We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative redhawk-device
+inherit autotools-brokensep pkgconfig pythonnative redhawk-entity
 
-EXTRA_OECONF += "--prefix=${SDRROOT}"
 EXTRA_AUTORECONF += "-I ${STAGING_DIR}/${MACHINE}${OSSIEHOME}/share/aclocal/ossie"
 
-FILES_${PN} += "${SDRROOT}/*"
-INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
+PROVIDES += "${PN}-dev"
+
+FILES_${PN} += "\
+        ${libdir}/libRFNoC_RH.so \
+        ${libdir}/pkgconfig \
+"
+FILES_${PN}-dev += "\
+        ${includedir}/RFNoC_Component.h \
+        ${includedir}/RFNoC_Persona.h \
+        ${includedir}/RFNoC_Programmable.h \
+        ${includedir}/RFNoC_Utils.h \
+"
 

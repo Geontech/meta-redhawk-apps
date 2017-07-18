@@ -35,7 +35,7 @@ SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "fe47c7da82b5ee29b6103cafd943085e594aefad"
+SRCREV = "f148a90b6a51dbd2eba9a90a10bba8e99aed20af"
 
 PR = "r0" 
 
