@@ -30,7 +30,7 @@ RDEPENDS_${PN} = "redhawk-core rf-noc-rh uhd"
 
 RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
 
-SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEVICE_NAME}.git;protocol=ssh;branch=master \
+SRC_URI = "git://git@github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "

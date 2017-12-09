@@ -30,7 +30,7 @@ RDEPENDS_${PN} = "redhawk-core uhd"
 
 RH_DEPS_NAME="RFNoC_RH"
 
-SRC_URI = "git://git@curiosity/RF-NoC/${RH_DEPS_NAME}.git;protocol=ssh;branch=develop \
+SRC_URI = "git://git@github.com/geontech/${RH_DEPS_NAME}.git;protocol=git;branch=develop \
         file://Clear_AMFLAGS.patch \
 "
 
