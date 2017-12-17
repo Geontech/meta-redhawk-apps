@@ -33,5 +33,5 @@ CORE_IMAGE_EXTRA_INSTALL += "\
     RFNoC_DefaultPersona \
     RFNoC_TestComponent \
     psd \
-    TuneFilterDecimate
+    TuneFilterDecimate \
     "
