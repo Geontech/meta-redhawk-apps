@@ -34,7 +34,7 @@ SRC_URI = "git://github.com/geontech/${RH_DEPS_NAME}.git;protocol=git;branch=dev
         file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "dd48b4e0726178ce770228d5886304495d9923e7"
+SRCREV = "f0bf68fb8cb6ea57d5239529aab4abd38362171b"
 
 PR = "r0"
 
