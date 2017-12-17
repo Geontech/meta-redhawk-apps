@@ -30,7 +30,7 @@ RDEPENDS_${PN} = "redhawk-core uhd"
 
 RH_DEVICE_NAME="RFNoC_DefaultPersona"
 
-SRC_URI = "git://git@github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
+SRC_URI = "git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "

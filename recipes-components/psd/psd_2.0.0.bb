@@ -30,7 +30,7 @@ RDEPENDS_${PN} = "redhawk-bulkio redhawk-core uhd"
 
 RH_COMPONENT_NAME="psd"
 
-SRC_URI = "git://git@github.com/geontech/${RH_COMPONENT_NAME}.git;protocol=git;branch=develop-2.0-RFNoC \
+SRC_URI = "git://github.com/geontech/${RH_COMPONENT_NAME}.git;protocol=git;branch=develop-2.0-RFNoC \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
 "

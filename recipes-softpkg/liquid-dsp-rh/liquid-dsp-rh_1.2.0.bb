@@ -30,7 +30,7 @@ RDEPENDS_${PN} = "boost-filesystem boost-serialization boost-system boost-thread
 
 RH_DEPS_NAME="liquid-dsp-rh"
 
-SRC_URI = "git://git@github.com/geontech/${RH_DEPS_NAME}.git;protocol=git;branch=develop \
+SRC_URI = "git://github.com/geontech/${RH_DEPS_NAME}.git;protocol=git;branch=develop \
     file://Add_Missing_Files.patch \
     file://Clear_AMFLAGS.patch \
     file://Force_Install_to_SDR.patch \
