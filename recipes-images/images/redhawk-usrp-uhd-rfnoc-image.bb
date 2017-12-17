@@ -29,9 +29,9 @@ require recipes-images/images/redhawk-usrp-uhd-image.bb
 SUMMARY = "Console-only REDHAWK Node with the USRP UHD device"
 
 CORE_IMAGE_EXTRA_INSTALL += "\
-    RFNoC_ProgrammableDevice \
-    RFNoC_DefaultPersona \
-    RFNoC_TestComponent \
+    rf-noc-programmable \
+    rf-noc-defaultpersona \
+    rf-noc-testcomponent \
     psd \
-    TuneFilterDecimate \
+    tunefilterdecimate \
     "
