@@ -43,11 +43,11 @@ S = "${WORKDIR}/git/cpp_rfnoc"
 
 # We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative redhawk-device
+inherit autotools-brokensep pkgconfig redhawk-device
 
 EXTRA_OECONF += "--prefix=${SDRROOT}"
 EXTRA_AUTORECONF += "-I ${STAGING_DIR}/${MACHINE}${OSSIEHOME}/share/aclocal/ossie"
 
 FILES_${PN} += "${SDRROOT}/*"
-INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
+INSANE_SKIP_${PN} += "dev-deps debug-files dev-so staticdev libdir"
 

@@ -24,9 +24,6 @@ LICENSE = "CLOSED"
 
 BBCLASSEXTEND += "native"
 
-# NOTE: This recipe requires the USRP UHD driver and hardware installed
-# which is provided by the meta-sdr layer which relies on meta-ettus.
-
 DEPENDS = "liquid-dsp-native"
 RDEPENDS_${PN} = ""
 
@@ -44,17 +41,14 @@ PR = "r0"
 
 S = "${WORKDIR}/git/"
 
-# We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative
+inherit autotools-brokensep
 
-EXTRA_OECONF = "--prefix=${STAGING_DIR}/${MACHINE}/usr/ --exec-prefix=${STAGING_DIR}/${MACHINE}/usr/"
-EXTRA_OECONF_class-native = "--prefix=${STAGING_DIR_NATIVE}/usr/ --exec-prefix=${STAGING_DIR_NATIVE}/usr/"
+EXTRA_OECONF = "--prefix=${D}/usr/ --exec-prefix=${D}/usr/"
+EXTRA_OECONF_class-native = "--prefix=${D}/usr/ --exec-prefix=${D}/usr/"
 
-FILES_${PN} += "/usr/*"
-FILES_${PN}-dev += "/usr/lib/libliquid.so"
-FILES_${PN}-staticdev += "/usr/lib/libliquid.a"
-#INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
+SOLIBS = ".so"
+FILES_SOLIBSDEV = ""
 
 do_compile() {
     export TOOLBINDIR=${STAGING_BINDIR_NATIVE}
