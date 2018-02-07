@@ -25,8 +25,8 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-core uhd"
-RDEPENDS_${PN} = "redhawk-core uhd"
+DEPENDS = "redhawk-core redhawk-bulkio uhd"
+RDEPENDS_${PN} = "redhawk-core redhawk-bulkio uhd"
 
 RH_COMPONENT_NAME="RFNoC_TestComponent"
 
@@ -35,7 +35,7 @@ SRC_URI = "git://github.com/geontech/${RH_COMPONENT_NAME}.git;protocol=git;branc
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "d2e2146b4a5dd180dffbce2b1379c4672fad3745"
+SRCREV = "ace976d392cbc92b8357f236a0d06561c473a538"
 
 PR = "r0" 
 
