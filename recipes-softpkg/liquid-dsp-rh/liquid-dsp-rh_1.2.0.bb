@@ -26,7 +26,7 @@ LICENSE = "CLOSED"
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
 DEPENDS = ""
-RDEPENDS_${PN} = "boost-filesystem boost-serialization boost-system boost-thread libfftwf omniorb redhawk-core util-linux-libuuid"
+RDEPENDS_${PN} = "boost-filesystem boost-serialization boost-system boost-thread libfftwf omniorb redhawk util-linux-libuuid"
 
 RH_DEPS_NAME="liquid-dsp-rh"
 

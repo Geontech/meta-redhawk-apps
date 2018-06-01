@@ -25,8 +25,8 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk-core redhawk-bulkio redhawk-frontend rf-noc-rh uhd"
-RDEPENDS_${PN} = "redhawk-core redhawk-bulkio redhawk-frontend rf-noc-rh uhd"
+DEPENDS = "frontendInterfaces rf-noc-rh uhd"
+RDEPENDS_${PN} = "frontendInterfaces rf-noc-rh uhd"
 
 RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
 
