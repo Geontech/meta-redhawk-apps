@@ -25,8 +25,8 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "bulkioInterfaces uhd"
-RDEPENDS_${PN} = "bulkioInterfaces uhd"
+DEPENDS = "bulkiointerfaces uhd"
+RDEPENDS_${PN} = "bulkiointerfaces uhd"
 
 RH_COMPONENT_NAME="psd"
 

@@ -25,8 +25,8 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "bulkioInterfaces uhd liquid-dsp fftwf"
-RDEPENDS_${PN} = "bulkioInterfaces uhd liquid-dsp fftwf"
+DEPENDS = "bulkiointerfaces uhd liquid-dsp fftwf"
+RDEPENDS_${PN} = "bulkiointerfaces uhd liquid-dsp fftwf"
 
 RH_COMPONENT_NAME="TuneFilterDecimate"
 
