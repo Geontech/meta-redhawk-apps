@@ -18,7 +18,7 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-require recipes-core/images/redhawk-usrp-uhd-image.bb
+require recipes-images/images/redhawk-usrp-uhd-image.bb
 
 # NOTE: This image requires the meta-ettus and meta-sdr layers
 # created by Philip Balister at Ettus Research:
