@@ -28,9 +28,9 @@ BBFILES ?= ""
 
 BBLAYERS ?= " \
   ##COREBASE##/meta \
+  ##COREBASE##/../meta-cloud-services \
+  ##COREBASE##/../meta-cloud-services/meta-openstack \
   ##COREBASE##/../meta-ettus \
-  ##COREBASE##/../meta-ettus/e100-bsp \
-  ##COREBASE##/../meta-ettus/e300-bsp \
   ##COREBASE##/../meta-ettus/common \
   ##COREBASE##/../meta-xilinx/meta-xilinx-bsp \
   ##COREBASE##/../meta-oe/meta-oe \
