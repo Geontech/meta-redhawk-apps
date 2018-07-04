@@ -179,9 +179,6 @@ USER_CLASSES ?= "buildstats image-mklibs image-prelink rm_work"
 # If using rm_work, this prevents the rootfs of these images from being deleted 
 # before wic has a chance to package it up into an image file.
 RM_WORK_EXCLUDE = "\
-    redhawk-base-image \
-    redhawk-node-image \
-    redhawk-usrp-uhd-image\
     redhawk-usrp-uhd-rfnoc-image\
     "
     

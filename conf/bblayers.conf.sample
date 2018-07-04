@@ -28,16 +28,15 @@ BBFILES ?= ""
 
 BBLAYERS ?= " \
   ##COREBASE##/meta \
-  ##COREBASE##/../meta-cloud-services \
-  ##COREBASE##/../meta-cloud-services/meta-openstack \
   ##COREBASE##/../meta-ettus \
   ##COREBASE##/../meta-ettus/common \
   ##COREBASE##/../meta-xilinx/meta-xilinx-bsp \
-  ##COREBASE##/../meta-oe/meta-oe \
-  ##COREBASE##/../meta-oe/meta-networking \
-  ##COREBASE##/../meta-oe/meta-python \
-  ##COREBASE##/../meta-oe/meta-filesystems \
+  ##COREBASE##/../meta-openembedded/meta-oe \
+  ##COREBASE##/../meta-openembedded/meta-networking \
+  ##COREBASE##/../meta-openembedded/meta-python \
+  ##COREBASE##/../meta-openembedded/meta-filesystems \
   ##COREBASE##/../meta-sdr \
+  ##COREBASE##/../meta-qt4 \
   ##COREBASE##/../meta-qt5 \
   ##COREBASE##/../meta-redhawk-sdr \
   ##COREBASE##/../meta-redhawk-apps \
