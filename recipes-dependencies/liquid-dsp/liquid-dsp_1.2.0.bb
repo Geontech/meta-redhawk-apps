@@ -32,6 +32,7 @@ RH_DEPS_NAME="liquid-dsp"
 SRC_URI = "git://github.com/jgaeddert/${RH_DEPS_NAME}.git;protocol=git;tag=v1.2.0 \
     file://Hard_Float.patch \
     file://Run_Native_Gentab.patch \
+    file://IsNan.patch \
 "
 
 SRC_URI_class-native = "git://github.com/jgaeddert/${RH_DEPS_NAME}.git;protocol=git;tag=v1.2.0 \
@@ -56,6 +57,13 @@ do_compile() {
 }
 
 do_install_class-native() {
-    cp -r ${S}/src/fec/gentab/reverse_byte_gentab ${STAGING_BINDIR_NATIVE}
-    cp -r ${S}/src/utility/gentab/count_ones_gentab ${STAGING_BINDIR_NATIVE}
+    install -d ${D}${bindir}
+    install ${S}/src/fec/gentab/reverse_byte_gentab ${D}${bindir}
+    install ${S}/src/utility/gentab/count_ones_gentab ${D}${bindir}
 }
+
+#populate_sysroot_liquid_native() {
+#    sysroot_stage_dir ${D}/usr/bin ${SYSROOT_NATIVE_BINDIR}
+#}
+
+#SYSROOT_PREPROCESS_FUNCS += "populate_sysroot_liquid_native"

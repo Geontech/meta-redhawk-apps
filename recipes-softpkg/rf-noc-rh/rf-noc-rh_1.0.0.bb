@@ -18,35 +18,26 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-DESCRIPTION = "REDHAWK Device for the RF-NoC Platforms"
-HOMEPAGE = "http://www.redhawksdr.org"
+DESCRIPTION = "RF-NoC RedHawk Library"
+HOMEPAGE = "http://www.geontech.com"
 LICENSE = "CLOSED"
 
-# NOTE: This recipe requires the USRP UHD driver and hardware installed
-# which is provided by the meta-sdr layer which relies on meta-ettus.
+RH_DEPS_NAME="RFNoC_RH"
 
-DEPENDS = "frontendinterfaces rf-noc-rh uhd"
-RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh uhd"
-
-RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
-
-SRC_URI = "git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
-    file://Add_Missing_Files.patch \
-    file://Clear_AMFLAGS.patch \
+SRC_URI = "git://github.com/geontech/${RH_DEPS_NAME}.git;protocol=git;branch=develop \
+        file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "1168de71639be55e077552cf314793d3a2042870"
+SRCREV = "976fd69a5c561d3e0be1aaa69aa571d33196e445"
 
-PR = "r0" 
+PR = "r0"
 
-S = "${WORKDIR}/git/cpp_armv7l"
+S = "${WORKDIR}/git/cpp"
 
 # We have to inherit from pythonnative if we do stuff with the system python.
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative redhawk-device
+inherit autotools-brokensep pkgconfig redhawk-softpkg
 
-EXTRA_OECONF += "--prefix=${SDRROOT}"
-
-FILES_${PN} += "${SDRROOT}/*"
-INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
+DEPENDS += "redhawk uhd"
+RDEPENDS_${PN} += "redhawk uhd"
 

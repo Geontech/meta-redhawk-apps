@@ -28,15 +28,14 @@ BBFILES ?= ""
 
 BBLAYERS ?= " \
   ##COREBASE##/meta \
-  ##COREBASE##/../meta-ettus \
-  ##COREBASE##/../meta-ettus/common \
-  ##COREBASE##/../meta-xilinx/meta-xilinx-bsp \
   ##COREBASE##/../meta-openembedded/meta-oe \
   ##COREBASE##/../meta-openembedded/meta-networking \
   ##COREBASE##/../meta-openembedded/meta-python \
   ##COREBASE##/../meta-openembedded/meta-filesystems \
   ##COREBASE##/../meta-sdr \
   ##COREBASE##/../meta-qt5 \
+  ##COREBASE##/../meta-xilinx/meta-xilinx-bsp \
+  ##COREBASE##/../meta-ettus \
   ##COREBASE##/../meta-redhawk-sdr \
   ##COREBASE##/../meta-redhawk-apps \
   "

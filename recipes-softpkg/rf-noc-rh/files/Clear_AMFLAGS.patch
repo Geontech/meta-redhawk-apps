@@ -1,0 +1,9 @@
+index 51de0bc..800994f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,4 +1,4 @@
+-ACLOCAL_AMFLAGS = -I m4 -I${OSSIEHOME}/share/aclocal/ossie
++ACLOCAL_AMFLAGS = -I m4
+ AUTOMAKE_OPTIONS = subdir-objects
+ 
+ lib_LTLIBRARIES = libRFNoC_RH.la

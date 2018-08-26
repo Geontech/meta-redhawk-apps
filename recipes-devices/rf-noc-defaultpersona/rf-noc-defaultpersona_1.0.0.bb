@@ -25,8 +25,8 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "redhawk rf-noc-rh uhd"
-RDEPENDS_${PN} = "redhawk rf-noc-rh uhd"
+DEPENDS = "frontendinterfaces rf-noc-rh uhd"
+RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh uhd"
 
 RH_DEVICE_NAME="RFNoC_DefaultPersona"
 
@@ -46,7 +46,6 @@ S = "${WORKDIR}/git/cpp_armv7l"
 inherit autotools-brokensep pkgconfig pythonnative redhawk-device
 
 EXTRA_OECONF += "--prefix=${SDRROOT}"
-EXTRA_AUTORECONF += "-I ${STAGING_DIR}/${MACHINE}${OSSIEHOME}/share/aclocal/ossie"
 
 FILES_${PN} += "${SDRROOT}/*"
 INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"

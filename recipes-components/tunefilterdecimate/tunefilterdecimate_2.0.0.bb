@@ -25,8 +25,8 @@ LICENSE = "CLOSED"
 # NOTE: This recipe requires the USRP UHD driver and hardware installed
 # which is provided by the meta-sdr layer which relies on meta-ettus.
 
-DEPENDS = "bulkiointerfaces uhd liquid-dsp fftwf"
-RDEPENDS_${PN} = "bulkiointerfaces uhd liquid-dsp fftwf"
+DEPENDS = "bulkiointerfaces uhd liquid-dsp fftw"
+RDEPENDS_${PN} = "bulkiointerfaces uhd liquid-dsp libfftwf"
 
 RH_COMPONENT_NAME="TuneFilterDecimate"
 
@@ -46,7 +46,6 @@ S = "${WORKDIR}/git/cpp_rfnoc"
 inherit autotools-brokensep pkgconfig redhawk-device
 
 EXTRA_OECONF += "--prefix=${SDRROOT}"
-EXTRA_AUTORECONF += "-I ${STAGING_DIR}/${MACHINE}${OSSIEHOME}/share/aclocal/ossie"
 
 FILES_${PN} += "${SDRROOT}/*"
 INSANE_SKIP_${PN} += "dev-deps debug-files dev-so staticdev libdir"
