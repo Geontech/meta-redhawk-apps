@@ -22,21 +22,24 @@ DESCRIPTION = "RF-NoC RedHawk Library"
 HOMEPAGE = "http://www.geontech.com"
 LICENSE = "CLOSED"
 
+# We have to inherit from pythonnative if we do stuff with the system python.
+# autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
+inherit autotools-brokensep pkgconfig redhawk-softpkg
+
 RH_DEPS_NAME="RFNoC_RH"
+
+SOFTPKG_PREFIX .= "/${RH_DEPS_NAME}"
+SOFTPKG_EPREFIX = "${SOFTPKG_PREFIX}/cpp_armv7l"
 
 SRC_URI = "git://github.com/geontech/${RH_DEPS_NAME}.git;protocol=git;branch=develop \
         file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "976fd69a5c561d3e0be1aaa69aa571d33196e445"
+SRCREV = "99e67def66d00a2049eac1a069bf4ce796757995"
 
 PR = "r0"
 
-S = "${WORKDIR}/git/cpp"
-
-# We have to inherit from pythonnative if we do stuff with the system python.
-# autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig redhawk-softpkg
+S = "${WORKDIR}/git/cpp_armv7l"
 
 DEPENDS += "redhawk uhd"
 RDEPENDS_${PN} += "redhawk uhd"

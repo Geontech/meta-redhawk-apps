@@ -22,11 +22,10 @@ DESCRIPTION = "REDHAWK Component with an RF-NoC implementation"
 HOMEPAGE = "http://www.redhawksdr.org"
 LICENSE = "CLOSED"
 
-# NOTE: This recipe requires the USRP UHD driver and hardware installed
-# which is provided by the meta-sdr layer which relies on meta-ettus.
+inherit redhawk-component
 
-DEPENDS = "bulkiointerfaces uhd"
-RDEPENDS_${PN} = "bulkiointerfaces uhd"
+DEPENDS = "bulkiointerfaces rf-noc-rh"
+RDEPENDS_${PN} = "bulkiointerfaces rf-noc-rh"
 
 RH_COMPONENT_NAME="psd"
 
@@ -35,18 +34,11 @@ SRC_URI = "git://github.com/geontech/${RH_COMPONENT_NAME}.git;protocol=git;branc
     file://Clear_AMFLAGS.patch \
 "
 
-SRCREV = "158f0fad8646926ecc53d0960a1cf5f97f3198fb"
+SRCREV = "f8b78007b88eded05d4283467fee9dd718376bcc"
 
 PR = "r0" 
 
 S = "${WORKDIR}/git/cpp_rfnoc"
 
-# We have to inherit from pythonnative if we do stuff with the system python.
-# autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
-inherit autotools-brokensep pkgconfig pythonnative redhawk-device
-
-EXTRA_OECONF += "--prefix=${SDRROOT}"
-
 FILES_${PN} += "${SDRROOT}/*"
-INSANE_SKIP_${PN} += "debug-files dev-so staticdev libdir installed-vs-shipped"
 
