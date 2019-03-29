@@ -34,7 +34,7 @@ SRC_URI = "\
     file://DeviceManager.dcd.xml \
 "
 
-SRCREV = "d44cf55d9b4cd15ef811ae864a24f0c384cda354"
+SRCREV = "b76330bfa089e8cc60a4c02296dc1ebe92fa9611"
 
 PR = "r0" 
 
