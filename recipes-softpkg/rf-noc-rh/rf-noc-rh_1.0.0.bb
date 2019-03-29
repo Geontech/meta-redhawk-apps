@@ -26,6 +26,8 @@ LICENSE = "CLOSED"
 # autotools-brokensep is the same as autotools but our build and src locations are the same since we cannot build away from our src.
 inherit autotools-brokensep pkgconfig redhawk-softpkg
 
+NO_SPD_PATCH = "1"
+
 RH_DEPS_NAME="RFNoC_RH"
 
 SOFTPKG_PREFIX .= "/${RH_DEPS_NAME}"

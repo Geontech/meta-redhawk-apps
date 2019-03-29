@@ -24,6 +24,8 @@ LICENSE = "CLOSED"
 
 inherit redhawk-component
 
+NO_SPD_PATCH = "1"
+
 DEPENDS = "bulkiointerfaces liquid-dsp fftw rf-noc-rh uhd"
 RDEPENDS_${PN} = "bulkiointerfaces liquid-dsp libfftwf rf-noc-rh uhd"
 

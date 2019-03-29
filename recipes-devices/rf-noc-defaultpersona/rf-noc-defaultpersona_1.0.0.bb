@@ -24,6 +24,8 @@ LICENSE = "CLOSED"
 
 inherit redhawk-device
 
+NO_SPD_PATCH = "1"
+
 DEPENDS = "frontendinterfaces rf-noc-rh"
 RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh"
 

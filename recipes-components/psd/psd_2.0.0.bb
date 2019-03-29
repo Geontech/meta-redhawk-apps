@@ -24,6 +24,8 @@ LICENSE = "CLOSED"
 
 inherit redhawk-component
 
+NO_SPD_PATCH = "1"
+
 DEPENDS = "bulkiointerfaces rf-noc-rh"
 RDEPENDS_${PN} = "bulkiointerfaces rf-noc-rh"
 
