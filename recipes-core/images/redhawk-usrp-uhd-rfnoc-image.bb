@@ -18,7 +18,7 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 #
 
-require recipes-core/images/redhawk-usrp-uhd-image.bb
+require recipes-core/images/redhawk-base-image.bb
 
 # NOTE: This image requires the meta-ettus and meta-sdr layers
 # created by Philip Balister at Ettus Research:
@@ -26,9 +26,11 @@ require recipes-core/images/redhawk-usrp-uhd-image.bb
 #   http://github.com/EttusResearch/meta-ettus
 #   http://github.com/balister/meta-sdr  
 
-SUMMARY = "Console-only REDHAWK Node with the USRP UHD device"
+SUMMARY = "Console-only REDHAWK Node with the USRP UHD and Programmable Persona devices"
 
 CORE_IMAGE_EXTRA_INSTALL += "\
+    uhd \
+    usrp-uhd \
     rf-noc-programmable \
     rf-noc-defaultpersona \
     rf-noc-testcomponent \
