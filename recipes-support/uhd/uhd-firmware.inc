@@ -30,7 +30,7 @@ do_install() {
     install -m 0644 ${S_DL}/* ${D}${datadir}/uhd/images
 }
 
-do_install_append_ettus-e300 () {
+do_install_append_ettus-e3xx-sg1 () {
     # Move the default e3x bit files
     # Also the RFNoC device doesn't like usrp_e310_fpga.bit existing (because it creates its own symlinks)
     # It's the same as the RFNOC one.
