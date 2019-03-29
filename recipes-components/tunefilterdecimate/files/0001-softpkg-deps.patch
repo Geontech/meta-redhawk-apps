@@ -1,0 +1,37 @@
+Index: cpp_rfnoc/configure.ac
+===================================================================
+--- cpp_rfnoc.orig/configure.ac
++++ cpp_rfnoc/configure.ac
+@@ -16,6 +16,7 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_R
+ PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig:$PKG_CONFIG_PATH
+ PKG_CHECK_MODULES([PROJECTDEPS], [ossie >= 2.0 omniORB4 >= 4.1.0])
+ PKG_CHECK_MODULES([INTERFACEDEPS], [bulkio >= 2.0])
++PKG_CHECK_MODULES([LIBUHD], [uhd >= 3.13])
+ RH_SOFTPKG_CXX([/deps/RFNoC_RH/RFNoC_RH.spd.xml], [cpp_armv7l])
+ OSSIE_ENABLE_LOG4CXX
+ AX_BOOST_BASE([1.41])
+Index: cpp_rfnoc/Makefile.am.ide
+===================================================================
+--- cpp_rfnoc.orig/Makefile.am.ide
++++ cpp_rfnoc/Makefile.am.ide
+@@ -9,7 +9,3 @@ redhawk_SOURCES_auto += TuneFilterDecima
+ redhawk_SOURCES_auto += TuneFilterDecimate_base.h
+ redhawk_SOURCES_auto += main.cpp
+ redhawk_SOURCES_auto += struct_props.h
+-redhawk_INCLUDES_auto = -I/var/RedHawk-2.1.2/sdr/dom/deps/rh/fftlib/include
+-redhawk_INCLUDES_auto += -I/var/RedHawk-2.1.2/sdr/dom/deps/RFNoC_RH/include
+-redhawk_INCLUDES_auto += -I/home/Patrick/git/uhd/host/include
+-redhawk_INCLUDES_auto += -I/var/RedHawk-2.1.2/sdr/dom/deps/rh/dsp/include
+Index: cpp_rfnoc/Makefile.am
+===================================================================
+--- cpp_rfnoc.orig/Makefile.am
++++ cpp_rfnoc/Makefile.am
+@@ -29,7 +29,7 @@ distclean-local:
+ # you wish to manually control these options.
+ include $(srcdir)/Makefile.am.ide
+ _libs_libTuneFilterDecimate_so_SOURCES = $(redhawk_SOURCES_auto)
+-_libs_libTuneFilterDecimate_so_LDADD = $(SOFTPKG_LIBS) $(PROJECTDEPS_LIBS) $(BOOST_LDFLAGS) $(BOOST_THREAD_LIB) $(BOOST_REGEX_LIB) $(BOOST_SYSTEM_LIB) $(INTERFACEDEPS_LIBS) $(redhawk_LDADD_auto) -L/usr/local/lib -lliquid
++_libs_libTuneFilterDecimate_so_LDADD = $(SOFTPKG_LIBS) $(PROJECTDEPS_LIBS) $(BOOST_LDFLAGS) $(BOOST_THREAD_LIB) $(BOOST_REGEX_LIB) $(BOOST_SYSTEM_LIB) $(INTERFACEDEPS_LIBS) $(redhawk_LDADD_auto) -lliquid
+ _libs_libTuneFilterDecimate_so_CXXFLAGS = -Wall $(SOFTPKG_CFLAGS) $(PROJECTDEPS_CFLAGS) $(BOOST_CPPFLAGS) $(INTERFACEDEPS_CFLAGS) $(redhawk_INCLUDES_auto)
+ _libs_libTuneFilterDecimate_so_LDFLAGS = -Wall $(redhawk_LDFLAGS_auto)
+ 

@@ -24,14 +24,13 @@ LICENSE = "CLOSED"
 
 inherit redhawk-component
 
-DEPENDS = "bulkiointerfaces liquid-dsp fftw rf-noc-rh"
-RDEPENDS_${PN} = "bulkiointerfaces liquid-dsp libfftwf rf-noc-rh"
+DEPENDS = "bulkiointerfaces liquid-dsp fftw rf-noc-rh uhd"
+RDEPENDS_${PN} = "bulkiointerfaces liquid-dsp libfftwf rf-noc-rh uhd"
 
 RH_COMPONENT_NAME="TuneFilterDecimate"
 
 SRC_URI = "git://github.com/geontech/${RH_COMPONENT_NAME}.git;protocol=git;branch=develop-2.0-RFNoC \
-    file://Add_Missing_Files.patch \
-    file://Clear_AMFLAGS.patch \
+    file://0001-softpkg-deps.patch \
 "
 
 SRCREV = "39c6ef80c52e70b53b34f4755c5de3c7e234fc0d"
