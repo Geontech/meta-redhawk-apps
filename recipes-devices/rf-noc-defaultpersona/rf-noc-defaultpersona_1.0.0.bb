@@ -29,16 +29,13 @@ RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh"
 
 RH_DEVICE_NAME="RFNoC_DefaultPersona"
 
-SRC_URI = "git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
-    file://Add_Missing_Files.patch \
-    file://Clear_AMFLAGS.patch \
-"
+SRC_URI = "git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop"
 
-SRCREV = "30143375befa472568af820f45b713f7f73ed1e6"
+SRCREV = "1339b734686d9e2282913f7c534f6c78dfebae2d"
 
 PR = "r0" 
 
 S = "${WORKDIR}/git/cpp_armv7l"
 
 FILES_${PN} += "${SDRROOT}/*"
-
+INSANE_SKIP_${PN} = "dev-so"
