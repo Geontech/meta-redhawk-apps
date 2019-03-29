@@ -1,0 +1,14 @@
+Index: host/cmake/Modules/UHDPython.cmake
+===================================================================
+--- host.orig/cmake/Modules/UHDPython.cmake
++++ host/cmake/Modules/UHDPython.cmake
+@@ -74,8 +74,7 @@ macro(PYTHON_CHECK_MODULE desc mod cmd h
+         COMMAND ${PYTHON_EXECUTABLE} -c "
+ #########################################
+ from distutils.version import LooseVersion
+-try: import ${mod}
+-except: exit(1)
++import ${mod}
+ try: assert ${cmd}
+ except: exit(2)
+ exit(0)

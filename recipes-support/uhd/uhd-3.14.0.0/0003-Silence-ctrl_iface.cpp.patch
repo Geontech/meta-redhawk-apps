@@ -1,0 +1,20 @@
+Index: host/lib/rfnoc/ctrl_iface.cpp
+===================================================================
+--- host.orig/lib/rfnoc/ctrl_iface.cpp
++++ host/lib/rfnoc/ctrl_iface.cpp
+@@ -47,9 +47,13 @@ public:
+ 
+     virtual ~ctrl_iface_impl(void)
+     {
+-        UHD_SAFE_CALL(
++        try {
+             // dummy peek with the purpose of ack'ing all packets
+-            this->send_cmd_pkt(0, 0, true);)
++            this->send_cmd_pkt(0, 0, true);
++        }
++        catch(const std::exception &e) {\
++            // don't print the output
++        }
+     }
+ 
+     /*******************************************************************
