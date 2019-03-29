@@ -36,6 +36,7 @@ SRC_URI = "git://github.com/jgaeddert/${RH_DEPS_NAME}.git;protocol=git;tag=v1.2.
 "
 
 SRC_URI_class-native = "git://github.com/jgaeddert/${RH_DEPS_NAME}.git;protocol=git;tag=v1.2.0 \
+    file://IsNan.patch \
 "
 
 PR = "r0" 
