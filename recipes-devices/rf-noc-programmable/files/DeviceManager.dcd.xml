@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deviceconfiguration id="DCE:0804b2a2-41c9-49c6-88ff-1950e2905ac6" name="DevMgr-RFNoC_ettus-e3xx-sg1">
+    <devicemanagersoftpkg>
+        <localfile name="/mgr/DeviceManager.spd.xml"/>
+    </devicemanagersoftpkg>
+    <componentfiles>
+        <componentfile type="SPD" id="RFNoC_ProgrammableDevice__6eb07c82-a231-47c6-ae53-28891c8e78d1">
+            <localfile name="/devices/RFNoC_ProgrammableDevice/RFNoC_ProgrammableDevice.spd.xml"/>
+        </componentfile>
+        <componentfile type="SPD" id="RFNoC_DefaultPersona__86501c3a-2941-4d9d-aae0-7be0160b39d2">
+            <localfile name="/devices/RFNoC_DefaultPersona/RFNoC_DefaultPersona.spd.xml"/>
+        </componentfile>
+    </componentfiles>
+    <partitioning>
+        <componentplacement>
+            <componentfileref refid="RFNoC_ProgrammableDevice__6eb07c82-a231-47c6-ae53-28891c8e78d1"/>
+            <componentinstantiation id="DCE:53ea4e5b-6afe-4c22-9a1e-e4d457b17fa5">
+                <usagename>RFNoC_ProgrammableDevice_ettus-e3xx-sg1</usagename>
+                <componentproperties>
+                    <structref refid="target_device">
+                        <simpleref refid="target::type" value="e3x0" />                    
+                        <simpleref refid="target::name" value="" />                        
+                        <simpleref refid="target::ip_address" value="" />                  
+                        <simpleref refid="target::serial" value="" />                      
+                    </structref>
+                </componentproperties>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="RFNoC_DefaultPersona__86501c3a-2941-4d9d-aae0-7be0160b39d2"/>
+            <compositepartofdevice refid="DCE:53ea4e5b-6afe-4c22-9a1e-e4d457b17fa5"/>
+            <componentinstantiation id="DCE:14fc374f-9cb4-45f8-b604-1c95a78562a0">
+                <usagename>RFNoC_DefaultPersona_1</usagename>
+                <componentproperties>
+                    <simpleref refid="loadFilepath" value="/usr/share/uhd/images/usrp_e310_fpga_default.bit"/>
+                    <simplesequenceref refid="available_blocks">
+                        <values>
+                            <value>FIR</value>
+                            <value>decimate</value>
+                        </values>
+                    </simplesequenceref>
+                </componentproperties>
+            </componentinstantiation>
+        </componentplacement>
+        <componentplacement>
+            <componentfileref refid="RFNoC_DefaultPersona__86501c3a-2941-4d9d-aae0-7be0160b39d2"/>
+            <compositepartofdevice refid="DCE:53ea4e5b-6afe-4c22-9a1e-e4d457b17fa5"/>
+            <componentinstantiation id="DCE:cd1f9a80-79fb-411a-bcc3-05792f7e87f2">
+                <usagename>RFNoC_DefaultPersona_2</usagename>
+                <componentproperties>
+                    <simpleref refid="loadFilepath" value="/usr/share/uhd/images/usrp_e310_fpga_default.bit"/>
+                    <simplesequenceref refid="available_blocks">
+                        <values>
+                            <value>decimate</value>
+                        </values>
+                    </simplesequenceref>
+                </componentproperties>
+            </componentinstantiation>
+        </componentplacement>
+    </partitioning>
+    <domainmanager>
+        <namingservice name="REDHAWK_DEV/REDHAWK_DEV"/>
+    </domainmanager>
+</deviceconfiguration>

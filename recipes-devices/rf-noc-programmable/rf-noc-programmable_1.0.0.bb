@@ -29,7 +29,9 @@ RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh"
 
 RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
 
-SRC_URI = "git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
+SRC_URI = "\
+    git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
+    file://DeviceManager.dcd.xml \
 "
 
 SRCREV = "d44cf55d9b4cd15ef811ae864a24f0c384cda354"
@@ -40,3 +42,8 @@ S = "${WORKDIR}/git/cpp_armv7l"
 
 FILES_${PN} += "${SDRROOT}/*"
 
+# Install the template node
+do_install_append () {
+    install -Dm 755 ${S}/../nodeconfig.py ${D}${SDRROOT}/dev/devices/${RH_DEVICE_NAME}/nodeconfig.py
+    install -Dm 644 ${WORKDIR}/DeviceManager.dcd.xml ${D}${SDRROOT}/dev/nodes/DevMgr-RFNoC_${MACHINE}/DeviceManager.dcd.xml
+}
