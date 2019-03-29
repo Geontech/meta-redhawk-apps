@@ -30,8 +30,6 @@ RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh"
 RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
 
 SRC_URI = "git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
-    file://Add_Missing_Files.patch \
-    file://Clear_AMFLAGS.patch \
 "
 
 SRCREV = "d44cf55d9b4cd15ef811ae864a24f0c384cda354"
