@@ -10,7 +10,7 @@ BBCLASSEXTEND = "native"
 DEPENDS_class-native = "git-native python3-mako-native boost-native \
     ncurses-native python3-requests-native python3-numpy-native \
     python3-urllib3-native python3-chardet-native python3-certifi-native \
-    python3-idna-native "
+    python3-idna-native python3-six-native "
 RDEPENDS_${PN}_class-native = "python3-requests"
 
 # No need to make for targets
