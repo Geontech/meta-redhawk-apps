@@ -31,11 +31,14 @@ SUMMARY = "Console-only REDHAWK Node with the USRP UHD and Programmable Persona 
 CORE_IMAGE_EXTRA_INSTALL += "\
     uhd \
     usrp-uhd \
-    rf-noc-programmable \
+    rf-noc-programmable-init \
     rf-noc-defaultpersona \
     rf-noc-testcomponent \
     psd \
     tunefilterdecimate \
     rf-noc-psd-waveform \
     rf-noc-tfd-waveform \
+    omniorb-init \
+    omnievents-init \
+    domain-init \
     "
