@@ -29,11 +29,16 @@ NO_SPD_PATCH = "1"
 DEPENDS = "frontendinterfaces rf-noc-rh"
 RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh"
 
+PACKAGE_BEFORE_PN += "${PN}-init"
+RDEPENDS_${PN} = "${PN}"
+
 RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
+RH_NODE_NAME="DevMgr-RFNoC_ettus-e3xx-sg1"
 
 SRC_URI = "\
     git://github.com/geontech/${RH_DEVICE_NAME}.git;protocol=git;branch=develop \
     file://DeviceManager.dcd.xml \
+    file://rf-noc-programmable.init.d \
 "
 
 SRCREV = "b76330bfa089e8cc60a4c02296dc1ebe92fa9611"
@@ -44,8 +49,24 @@ S = "${WORKDIR}/git/cpp_armv7l"
 
 FILES_${PN} += "${SDRROOT}/*"
 
+inherit update-rc.d
+RFNOC_NODE_INITD_NAME="node-${RH_NODE_NAME}"
+INITSCRIPT_PACKAGES = "${PN}-init"
+INITSCRIPT_NAME_${PN}-init = "${RFNOC_NODE_INITD_NAME}"
+INITSCRIPT_PARAMS_${PN}-init = "start 99 2 3 4 5 . stop 01 0 1 6 ."
+FILES_${PN}-init = "${sysconfdir}/init.d/${RFNOC_NODE_INITD_NAME}"
+
+do_compile_append () {
+    cp ${WORKDIR}/rf-noc-programmable.init.d ${B}/${RFNOC_NODE_INITD_NAME}
+    sed -i "s|NODE_NAME|${RH_NODE_NAME}|g"   ${B}/${RFNOC_NODE_INITD_NAME}
+    sed -i "s|SDRROOT_PATH|${SDRROOT}|g"     ${B}/${RFNOC_NODE_INITD_NAME}
+    sed -i "s|OSSIEHOME_PATH|${OSSIEHOME}|g" ${B}/${RFNOC_NODE_INITD_NAME}
+    sed -i "s|DOMAIN_NAME|REDHAWK_DEV|g"     ${B}/${RFNOC_NODE_INITD_NAME}
+}
+
 # Install the template node
 do_install_append () {
     install -Dm 755 ${S}/../nodeconfig.py ${D}${SDRROOT}/dev/devices/${RH_DEVICE_NAME}/nodeconfig.py
     install -Dm 644 ${WORKDIR}/DeviceManager.dcd.xml ${D}${SDRROOT}/dev/nodes/DevMgr-RFNoC_${MACHINE}/DeviceManager.dcd.xml
+    install -Dm 755 ${B}/${RFNOC_NODE_INITD_NAME} ${D}/${sysconfdir}/init.d/${RFNOC_NODE_INITD_NAME}
 }
