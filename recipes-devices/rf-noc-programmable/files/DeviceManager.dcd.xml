@@ -51,7 +51,7 @@
                     <simpleref refid="loadFilepath" value="/usr/share/uhd/images/usrp_e310_fpga_default.bit"/>
                     <simplesequenceref refid="available_blocks">
                         <values>
-                            <value>decimate</value>
+                            <value>FFT</value>
                         </values>
                     </simplesequenceref>
                 </componentproperties>
