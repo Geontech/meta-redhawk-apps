@@ -36,4 +36,6 @@ CORE_IMAGE_EXTRA_INSTALL += "\
     rf-noc-testcomponent \
     psd \
     tunefilterdecimate \
+    rf-noc-psd-waveform \
+    rf-noc-tfd-waveform \
     "
