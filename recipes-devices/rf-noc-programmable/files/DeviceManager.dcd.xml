@@ -48,7 +48,7 @@
             <componentinstantiation id="DCE:cd1f9a80-79fb-411a-bcc3-05792f7e87f2">
                 <usagename>RFNoC_DefaultPersona_2</usagename>
                 <componentproperties>
-                    <simpleref refid="loadFilepath" value="/usr/share/uhd/images/usrp_e310_fpga_default.bit"/>
+                    <simpleref refid="loadFilepath" value="/usr/share/uhd/images/usrp_e310_fpga_RFNOC_default.bit"/>
                     <simplesequenceref refid="available_blocks">
                         <values>
                             <value>FFT</value>
