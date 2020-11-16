@@ -30,7 +30,7 @@ DEPENDS = "frontendinterfaces rf-noc-rh"
 RDEPENDS_${PN} = "frontendinterfaces rf-noc-rh"
 
 PACKAGE_BEFORE_PN += "${PN}-init"
-RDEPENDS_${PN} = "${PN}"
+RDEPENDS_${PN}-init = "${PN}"
 
 RH_DEVICE_NAME="RFNoC_ProgrammableDevice"
 RH_NODE_NAME="DevMgr-RFNoC_ettus-e3xx-sg1"
