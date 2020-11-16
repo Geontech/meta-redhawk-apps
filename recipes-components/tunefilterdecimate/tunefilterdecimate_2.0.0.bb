@@ -35,7 +35,7 @@ SRC_URI = "git://github.com/geontech/${RH_COMPONENT_NAME}.git;protocol=git;branc
     file://0001-softpkg-deps.patch \
 "
 
-SRCREV = "39c6ef80c52e70b53b34f4755c5de3c7e234fc0d"
+SRCREV = "a260933985b578745e20275d830305969cd9a652"
 
 PR = "r0" 
 
