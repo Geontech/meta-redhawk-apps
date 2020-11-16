@@ -30,9 +30,11 @@ The following hardware-accelerated Components are installed:
 
 The Programmable and Persona Device pattern description in the REDHAWK Documentation and its API leave considerable room for implementation choices.  The general theory of operation discussed in the reference discussion (above) is that we have _Persona_ Executable Devices that identify FPGA firmware loads containing some hardware-accelerated implementations of REDHAWK Components.  The _Programmable_ device is in charge of managing the FPGA loads and exposing the FEI (i.e., even though the USRP_UHD is installed, you do not need it running if you're using the RFNoC_ProgrammableDevice).  Because a firmware must be loaded in order to use the FEI, the steps of operation become:
 
-1. Allocate the Persona device containing your preferred hardware load
-2. Allocate the FEI Device (to activate the tuner)
-3. Load a waveform with the accelerated components
+1. Allocate the Persona device containing your preferred hardware load.  If successful, the parent Programmable device will indicate the state as ACTIVE in the `hw_load_statuses` list.
+2. Load a waveform with the accelerated components.
+3. Allocate the FEI Device (to activate the tuner) if the hardware load contains the Radio block and connect it to your waveform.
+
+Because of the nature of the underlying tooling, the Programmable device checks the default image location to see if it exists as a link or not (`/usr/share/uhd/images/usrp_e310_fpga.bit`).  If it exists on start-up, then every hardware load request must have that same name.  If you're allocating a persona but the `hw_load_statuses` still doesn't indicate the load as active, verify that `.bit` file is unlinked and re-start the node.
 
 ## Demos
 
